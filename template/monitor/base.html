@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Server Monitor</title>
+    <link rel="stylesheet" type="text/css" href="/static/Monitor/main.css">
+    {% block stylesheet %}
+    {% endblock %}
+</head>
+<body>
+<div id="top-bar">
+    <div id="navigation">
+        <ul id="welcome-back">
+            {% if request.user.is_authenticated %}
+            Welcome, {{ request.user.username }}
+            <li><a href="{% url logout %}">Logout</a></li>
+            {% endif %}
+        </ul>
+        <ul id="menu">
+            <li>Home</li>
+        </ul>
+    </div>
+</div>
+<div id="content">
+{% block content %}
+{% endblock %}
+</div>
+</body>
+</html>
+

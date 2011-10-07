@@ -1,0 +1,22 @@
+{% extends 'monitor/base.html' %}
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="/static/Monitor/edit-server.css">
+{% endblock %}
+{% block content %}
+    <table border=0 class="edit-table">
+        <tr class="dark-row">
+            <th>Name</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Frequency</th>
+        </tr>
+        {% for monitor in monitors %}
+        <tr class="{% cycle 'light-row' 'dark-row' %}">
+            <td class="edit-server-name">{{ monitor.name }}</td>
+            <td class="edit-server-type">{{ monitor.type }}</td>
+            <td class="edit-server-status">{{ monitor.status }}</td>
+            <td class="edit-server-frequency">{{ monitor.frequency }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

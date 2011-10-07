@@ -1,0 +1,29 @@
+{% extends "monitor/base.html" %}
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="/static/Monitor/index.css">
+{% endblock %}
+{% block content %}
+{% if not request.user.is_authenticated %}
+    <form action="{% url login %}" method="post">
+        <table border=0 cellpadding=0 cellspacing=0>
+            {% csrf_token %}
+            <tr><th colspan="2">Login</th></tr>
+            <tr><th>{{ form.username.label_tag }}:</th><td>{{ form.username }}</td></tr>
+            <tr><th>{{ form.password.label_tag }}:</th><td>{{ form.password }}</td></tr>
+            <tr><td colspan="2" class="center"><input type="submit" name="login" value="Login!"></td></tr>
+        </table>
+    </form>
+{% else %}
+    <table border=0 class="edit-table">
+        <tr class="dark-row">
+            <th class="server">Server</th>
+            <th class="edit">Edit?</th>
+        </tr>
+        {% for server in servers %}
+        <tr class="{% cycle 'light-row' 'dark-row' %}">
+            <td class="server">{{ server.name }}</td><td class="edit"><a href="{% url edit-server server.id %}"> Edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}
