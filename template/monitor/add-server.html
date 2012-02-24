@@ -2,16 +2,16 @@
 {% block stylesheet %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}Monitor/add-server.css">
 {% endblock %}
-{% block current_page %} &raquo; Edit Server - {{ server.name }}{% endblock %}
+{% block current_page %} &raquo; Add Server{% endblock %}
 {% block content %}
     {% if error %}
     {{ error }}
     {% endif %}
-    <form action="{% url edit-server server.id %}" method="post">
+    <form action="{% url add-server %}" method="post">
         <table border=0>
             <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='{{ csrf_token }}' /></div>
             <tr><th>{{ form.name.label_tag }}:</th><td>{{ form.name }}</td></tr>
-            <tr><td colspan="2" class="center"><input type="submit" name="Edit" value="Edit"></td></tr>
+            <tr><td colspan="2" class="center"><input type="submit" name="add" value="Add"></td></tr>
         </table>
     </form>
 {% endblock %}

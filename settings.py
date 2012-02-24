@@ -9,7 +9,7 @@ ADMINS = (
 )
 
 ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
-ROOT_URL = '155.33.143.253:8000'
+ROOT_URL = '/monitor/'
 
 MANAGERS = ADMINS
 
@@ -143,7 +143,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.contrib.auth.context_processors.auth',
 )
+
+LOGIN_URL = ROOT_URL + 'login/'
+LOGIN_REDIRECT_URL = ROOT_URL + '/'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

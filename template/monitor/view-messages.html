@@ -1,0 +1,23 @@
+{% extends 'monitor/base.html' %}
+{% block current_page %}
+&raquo; <a href="{% url view-monitors server.id %}">{{ server.name }}</a> &raquo; {{ monitor.name }} - Messages
+{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}Monitor/view-messages.css">
+{% endblock %}
+{% block content %}
+    <table border="0" id="messages">
+        <tr class="dark-row">
+            <th class="message-type">Type</th>
+            <th class="message-address">Address</th>
+            <th class="message-edit"></th>
+        </tr>
+        {% for message in messages %}
+        <tr class="{% cycle 'light-row' 'dark-row' %}">
+            <td class="message-type">{{ message.get_type_display }}</td>
+            <td class="message-address">{{ message.address }}</td>
+            <td class="message-edit"><a href="{% url edit-message message.id %}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

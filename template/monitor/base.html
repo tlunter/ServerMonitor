@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Server Monitor</title>
-    <link rel="stylesheet" type="text/css" href="/static/Monitor/main.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}Monitor/main.css">
     {% block stylesheet %}
     {% endblock %}
 </head>
@@ -16,7 +16,7 @@
             {% endif %}
         </ul>
         <ul id="menu">
-            <li>Home</li>
+            <li><a href="{% url main_page %}">Home</a>{% block current_page %}{% endblock %}</li>
         </ul>
     </div>
 </div>

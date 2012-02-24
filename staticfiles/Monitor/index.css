@@ -1,4 +1,4 @@
-table.edit-table
+table.server
 {
     width: 100%;
     border-collapse: collapse;
@@ -13,14 +13,19 @@ tr.dark-row
     border: 1px solid #e0e0e0;
     background: #f0f0f0;
 }
-td.server
+td.server-name
 {
-    width: 95%;
+    width: 90%;
     padding: 5px 5px 5px 10px;
 }
-td.edit
+th.server-name
+{
+    width: 90%;
+}
+td.server-view
 {
     padding: 5px 10px 5px 5px;
-    float: right;
 }
-
+th.server-view
+{
+}

@@ -1,0 +1,116 @@
+{% extends 'monitor/base.html' %}
+{% load Monitor_extras %}
+{% block current_page %} &raquo; {{ server.name }}{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}Monitor/view-monitors.css">
+    <script type="text/javascript" src="{{ STATIC_URL }}Monitor/jquery-1.6.4.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('[id^="monitor-row-"]').click(function()
+        {
+            var thisRow = $(this).attr('id').split('-')[2];
+
+            $('[name="monitor-data-' + thisRow +'"]').toggle();
+
+        });
+    });
+    </script>
+{% endblock %}
+{% block content %}
+    <table border="0" class="monitor-table">
+        <thead>
+        <tr class="dark-row">
+            <th class="monitor-name">Name</th>
+            <th class="monitor-type">Type</th>
+            <th class="monitor-status">Status</th>
+            <th class="monitor-frequency">Frequency</th>
+            <th class="monitor-edit">&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for monitor in monitors %}
+        <tr class="{% cycle 'light-row' 'dark-row' as monitorcolor %} monitor" id="monitor-row-{{ monitor.id }}">
+            <td class="monitor-name">{{ monitor.name }}</td>
+            <td class="monitor-type">{{ monitor.type }}</td>
+            <td class="monitor-status">{{ monitor.status }}</td>
+            <td class="monitor-frequency">{{ monitor.frequency }}</td>
+            <td class="monitor-edit"><a href="#">Edit</a></td>
+        </tr>
+        <tr class="monitor-table" name="monitor-data-{{ monitor.id }}" style="display: none;">
+            <td colspan="5" class="monitor-table">
+                <table class="monitor-data">
+                    <thead>
+                    <tr class="empty-row">
+                        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+                    </tr>
+                    </thead>
+                    {% if monitor|searches %}
+                    <thead>
+                    <tr class="header-row">
+                        <th colspan="4">HTTP</th>
+                    </tr>
+                    <tr class="search dark-row">
+                        <th class="search-address">Address</th>
+                        <th class="search-type">Type</th>
+                        <th class="search-value">Value</th>
+                        <th class="search-edit"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for search in monitor|searches %}
+                    <tr class="search">
+                        <td class="search-address"><a href="{{ search.address }}">{{ search.address }}</a></td>
+                        <td class="search-type">{{ search.get_type_display }}</td>
+                        <td class="search-value">{{ search.value }}</td>
+                        <td class="search-edit"><a href="#">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tr class="empty-row">
+                        <td colspan="4">&nbsp;</td>
+                    </tr>
+                    {% endif %}
+
+                    {% if monitor|sockets %}
+                    <thead>
+                    <tr class="header-row">
+                        <th colspan="4">Socket</th>
+                    </tr>
+                    <tr class="search dark-row">
+                        <th colspan="2" class="search-address">Address</th>
+                        <th class="search-type">Port</th>
+                        <th class="search-edit"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for socket in monitor|sockets %}
+                    <tr class="search">
+                        <td colspan="2" class="search-address">{{ socket.address }}</td>
+                        <td class="search-type">{{ socket.port }}</td>
+                        <td class="search-edit"><a href="#">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                    <tr class="empty-row">
+                        <td colspan="4">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                    {% endif %}
+                    <tbody>
+                    <tr class="header-row">
+                        <th colspan="4"><a href="{% url view-messages monitor.id %}">Messages</a></th>
+                    </tr>
+
+                    <tr class="empty-row">
+                        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <thead>
+            <tr><th colspan="5"><a href="{% url edit-server server.id %}">Edit Server</a></th></tr>
+        </thead>
+    </table>
+{% endblock %}

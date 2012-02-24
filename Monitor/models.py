@@ -42,7 +42,7 @@ class Monitor(models.Model):
     frequency = models.IntegerField('Frequency')
 
     def __unicode__(self):
-        return str(self.name)
+        return str(self.name + ' - ' + self.server.name)
 
 class Search(models.Model):
     monitor = models.ForeignKey(Monitor)
@@ -58,10 +58,16 @@ class Search(models.Model):
 
     value = models.CharField('Value',max_length=255)
 
+    def __unicode__(self):
+        return str(self.address + ' ' + self.get_type_display() + ' ' + self.value)
+
 class Socket(models.Model):
     monitor = models.ForeignKey(Monitor)
     address = models.CharField('Address',max_length=255)
     port = models.IntegerField('Port Number',max_length=255)
+
+    def __unicode__(self):
+        return str(self.address + ':' + self.port)
 
 class Message(models.Model):
     monitor = models.ForeignKey(Monitor)
@@ -72,3 +78,6 @@ class Message(models.Model):
             )
     type = models.CharField('Type',max_length=4,choices=types)
     address = models.CharField('Address',max_length=255)
+
+    def __unicode__(self):
+        return str(self.get_type_display() + ' - ' + self.address)

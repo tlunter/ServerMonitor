@@ -1,0 +1,44 @@
+table#messages
+{
+    width: 100%;
+    border-collapse: collapse;
+}
+tr.light-row
+{
+    border: 1px solid #e0e0e0;
+    background: #f9f9f9;
+}
+tr.dark-row
+{
+    border: 1px solid #e0e0e0;
+    background: #f0f0f0;
+}
+td.message-type
+{
+    width: 10%;
+    padding: 5px 5px 5px 10px;
+}
+th.message-type
+{
+    width: 10%;
+}
+td.message-address
+{
+    width: 75%;
+    padding: 5px 5px 5px 5px;
+}
+th.message-address
+{
+    width: 75%;
+}
+td.message-edit
+{
+    width: 5%;
+    padding: 5px 5px 5px 5px;
+    text-align: right;
+}
+th.message-edit
+{
+    width: 5%;
+    text-align: right;
+}

@@ -15,21 +15,45 @@ tr.dark-row
 }
 td.edit-server-name
 {
-    width: 70%;
+    width: 50%;
     padding: 5px 5px 5px 10px;
 }
 td.edit-server-type
 {
-    width: 7.5%;
+    width: 12.5%;
     padding: 5px 5px 5px 5px;
 }
 td.edit-server-status
 {
-    width: 7.5%;
+    width: 12.5%;
     padding: 5px 5px 5px 5px;
 }
 td.edit-server-frequency
 {
     width: 15%;
     padding: 5px 10px 5px 5px;
+}
+
+tr.search
+{
+    background: #fff;
+    border: 1px solid #e0e0e0;
+}
+td.search-address
+{
+    padding: 2px 5px;
+}
+td.search-type
+{
+    padding: 2px 5px;
+}
+td.search-value
+{
+    padding: 2px 5px;
+}
+
+tr.header-row
+{
+    font: 1.1em "Lucida Grande", Verdana, Arial, sans-serif;
+    padding: 5px 5px 5px 5px;
 }

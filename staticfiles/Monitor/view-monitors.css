@@ -1,0 +1,134 @@
+table.monitor-table
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+tr.monitor:hover
+{
+    background: #ebebeb;
+    cursor: pointer;
+}
+tr.light-row
+{
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    background: #f9f9f9;
+}
+tr.dark-row
+{
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    background: #f0f0f0;
+}
+td.monitor-name
+{
+    width: 50%;
+    padding: 5px 5px 5px 10px;
+}
+th.monitor-name
+{
+    width: 50%;
+}
+td.monitor-type
+{
+    width: 15%;
+    padding: 5px 5px 5px 5px;
+}
+th.monitor-type
+{
+    width: 15%;
+}
+td.monitor-status
+{
+    width: 10%;
+    padding: 5px 5px 5px 5px;
+}
+th.monitor-status
+{
+    width: 10%;
+}
+td.monitor-frequency
+{
+    width: 15%;
+    padding: 5px 5px 5px 5px;
+}
+th.monitor-frequency
+{
+    width: 15%;
+}
+td.monitor-edit
+{
+    width: 5%;
+    margin: 0;
+    padding: 5px 5px 5px 5px;
+    text-align: right;
+}
+th.monitor-edit
+{
+    width: 5%;
+    margin: 0;
+    text-align: right;
+}
+
+tr.search
+{
+    border: 1px solid #e0e0e0;
+    width: 100%;
+}
+td.search-address,
+th.search-address
+{
+    width: 50%;
+    margin: 0;
+    padding: 2px 5px;
+}
+td.search-type,
+th.search-type
+{
+    width: 10%;
+    margin: 0;
+    padding: 2px 5px;
+}
+td.search-value,
+th.search-value
+{
+    width: 35%;
+    margin: 0;
+    padding: 2px 5px;
+}
+td.search-edit,
+th.search-edit
+{
+    width: 5%;
+    margin: 0;
+    padding: 2px 5px;
+    text-align: right;
+}
+
+tr.header-row
+{
+    font: 1.1em "Lucida Grande", Verdana, Arial, sans-serif;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+}
+table.monitor-data
+{
+    margin: 0 auto;
+    width: 796px;
+    border-collapse: collapse;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+}
+tr.monitor-table
+{
+    text-align: center;
+}
+td.monitor-table
+{
+    text-align: center;
+    padding: 1px 0px 1px 1px;
+}

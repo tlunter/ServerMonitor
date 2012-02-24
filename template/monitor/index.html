@@ -1,6 +1,6 @@
 {% extends "monitor/base.html" %}
 {% block stylesheet %}
-    <link rel="stylesheet" type="text/css" href="/static/Monitor/index.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}Monitor/index.css">
 {% endblock %}
 {% block content %}
 {% if not request.user.is_authenticated %}
@@ -14,16 +14,19 @@
         </table>
     </form>
 {% else %}
-    <table border=0 class="edit-table">
+    <table border=0 class="server">
         <tr class="dark-row">
-            <th class="server">Server</th>
-            <th class="edit">Edit?</th>
+            <th class="server-name">Server</th>
+            <th class="server-view"></th>
         </tr>
         {% for server in servers %}
         <tr class="{% cycle 'light-row' 'dark-row' %}">
-            <td class="server">{{ server.name }}</td><td class="edit"><a href="{% url edit-server server.id %}"> Edit</a></td>
+            <td class="server-name">{{ server.name }}</td>
+            <td class="server-view"><a href="{% url view-monitors server.id %}">View</a> <a href="{% url edit-server server.id %}">Edit</a></td>
         </tr>
         {% endfor %}
+        <tr>
+            <th colspan="2"><a href="{% url add-server %}">Add Server</a></th>
     </table>
 {% endif %}
 {% endblock %}
